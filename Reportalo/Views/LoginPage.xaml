@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Reportalo.Views.LoginPage">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="200"/>
+                    <RowDefinition Height="200"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                
+                <StackLayout HorizontalOptions="Center" Grid.Column="0" Grid.Row="0" Margin="0,0,0,20">
+                    <Image Source="splashN" HeightRequest="100" WidthRequest="100"/>
+                </StackLayout>
+
+                <StackLayout HorizontalOptions="Center" Grid.Column="0" Grid.Row="1">
+                    <Label Text="Bienvenido a" TextColor="#333333" FontSize="16" FontAttributes="None" HorizontalOptions="Center"/>
+                    <Label Text="Reportalo" TextColor="#333333" FontSize="15" FontAttributes="None" HorizontalOptions="Center"/>
+                </StackLayout>
+
+                <StackLayout HorizontalOptions="Center" Grid.Column="0" Grid.Row="2" Spacing="10">
+                    <Frame Padding="0,4,0,4" HasShadow="True">
+                        <Button Text="Ingresar" HeightRequest="35" WidthRequest="185" TextColor="#333333" BackgroundColor="White" FontSize="10" />
+                    </Frame >
+                    <Frame Padding="0,4,0,4" HasShadow="True">
+                        <Button Text="Registrarse" HeightRequest="35" WidthRequest="185" TextColor="#333333" BackgroundColor="White" FontSize="10" Clicked="Button_Clicked"/>
+                    </Frame>
+                </StackLayout>
+
+                <StackLayout HorizontalOptions="Center" Grid.Column="0" Grid.Row="4">
+                    <Label Text="Harold Martinez 2023, Derechos Reservados" TextColor="#333333" FontSize="10" FontAttributes="None" HorizontalOptions="Center"/>
+                    
+                </StackLayout>
+
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Reportalo.Views;
+using System;
+using System.Linq.Expressions;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,7 +12,7 @@ namespace Reportalo
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new LoginPage());
         }
 
         protected override void OnStart()
