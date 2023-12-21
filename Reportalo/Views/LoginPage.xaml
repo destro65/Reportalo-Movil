@@ -6,8 +6,9 @@
         <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="200"/>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="100"/>
                     <RowDefinition Height="200"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
@@ -21,12 +22,17 @@
 
                 <StackLayout HorizontalOptions="Center" Grid.Column="0" Grid.Row="1">
                     <Label Text="Bienvenido a" TextColor="#333333" FontSize="16" FontAttributes="None" HorizontalOptions="Center"/>
-                    <Label Text="Reportalo" TextColor="#333333" FontSize="15" FontAttributes="None" HorizontalOptions="Center"/>
+                    <Label Text="*********Reportalo*********" TextColor="#333333" FontSize="16" FontAttributes="None" HorizontalOptions="Center"/>
                 </StackLayout>
 
-                <StackLayout HorizontalOptions="Center" Grid.Column="0" Grid.Row="2" Spacing="10">
+                <StackLayout HorizontalOptions="CenterAndExpand" Grid.Column="0" Grid.Row="2">
+                    <Entry Placeholder="Usuario" TextColor="#333333" FontSize="Medium"  HorizontalOptions="StartAndExpand" x:Name="txtuser"/>
+                    <Entry Placeholder="Contraseña" TextColor="#333333" FontSize="Medium"  HorizontalOptions="Start" IsPassword="True" x:Name="txtpass"/>
+                </StackLayout>
+
+                <StackLayout HorizontalOptions="Center" Grid.Column="0" Grid.Row="3" Spacing="5">
                     <Frame Padding="0,4,0,4" HasShadow="True">
-                        <Button Text="Ingresar" HeightRequest="35" WidthRequest="185" TextColor="#333333" BackgroundColor="White" FontSize="10" />
+                        <Button Text="Ingresar" HeightRequest="35" WidthRequest="185" TextColor="#333333" BackgroundColor="White" FontSize="10" Clicked="Button_Clicked_1"/>
                     </Frame >
                     <Frame Padding="0,4,0,4" HasShadow="True">
                         <Button Text="Registrarse" HeightRequest="35" WidthRequest="185" TextColor="#333333" BackgroundColor="White" FontSize="10" Clicked="Button_Clicked"/>

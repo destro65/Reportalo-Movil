@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Reportalo.Views.Principal"
+             Title="Registros"
+             IconImageSource="bus.png">
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView x:Name="vistadia" HasUnevenRows="True" ItemTapped="vistadia_ItemTapped"  IsPullToRefreshEnabled="True" IsRefreshing="True" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Label Text="{Binding created_at}" ></Label>
+                                <Label Text="{Binding carro_id}" FontSize="Large" FontAttributes="Bold"></Label>
+                                <Label Text="{Binding ruta_id}" TranslationY="-2"></Label>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
