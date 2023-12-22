@@ -41,8 +41,7 @@
 
                 <StackLayout HorizontalOptions="Center" Grid.Column="0" Grid.Row="4">
                     <Label Text="Harold Martinez 2023, Derechos Reservados" TextColor="#333333" FontSize="10" FontAttributes="None" HorizontalOptions="Center"/>
-                    
-                </StackLayout>
+                                    </StackLayout>
 
             </Grid>
         </StackLayout>

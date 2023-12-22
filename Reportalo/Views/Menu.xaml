@@ -1,8 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:Reportalo.Views"
-            x:Class="Reportalo.Views.Menu">
+            x:Class="Reportalo.Views.Menu"
+            Title="Reportalo" NavigationPage.HasBackButton="False"
+            >
     
+    <TabbedPage.ToolbarItems>
+        <ToolbarItem Order="Primary" Text="" x:Name="txtid"></ToolbarItem>
+        <ToolbarItem Order="Primary" IconImageSource="notificacion.png"></ToolbarItem>
+        <ToolbarItem Order="Secondary" Text="Documentacion"></ToolbarItem>
+        <ToolbarItem Order="Secondary" Text="Logout" Clicked="ToolbarItem_Clicked"></ToolbarItem>
+        
+    </TabbedPage.ToolbarItems>
+
+        
     <local:Principal/>
     <local:Perfil/>
     <local:Multas/>

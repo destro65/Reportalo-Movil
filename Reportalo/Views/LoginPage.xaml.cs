@@ -13,7 +13,9 @@ namespace Reportalo.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class LoginPage : ContentPage
 	{
-		public LoginPage ()
+        public string id { get; set; }
+
+        public LoginPage ()
 		{
 			InitializeComponent ();
             		}
@@ -28,14 +30,19 @@ namespace Reportalo.Views
         {
             var conexion = new MySqlConnection(Properties.Resources.Conexion);
             conexion.Open();
+            
 
-            var cmd = new MySqlCommand("select * from users where email='" + txtuser.Text + "'and password='" + txtpass.Text + "'",conexion);
+            var cmd = new MySqlCommand("select * from users where email='" + txtuser.Text + "'and password='" + txtpass.Text +"'", conexion);
             var rd= cmd.ExecuteReader ();
+
+
 
             if(rd.Read())
             {
                 DisplayAlert("Aviso", "Informacion Correcta", "Ok");
-                Navigation.PushAsync(new Menu());
+                id = rd.GetInt16("id").ToString();
+				
+                Navigation.PushAsync(new Menu(id));
             }
             else
             {

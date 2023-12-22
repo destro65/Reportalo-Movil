@@ -138,7 +138,9 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxhdpi\splashN_adaptive_fore.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\notificacion.png" />
+  </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\multa.png" />
   </ItemGroup>
