@@ -27,20 +27,25 @@
                 </StackLayout>
                 <StackLayout Grid.Row="2" HorizontalOptions="Center">
                     <Frame HasShadow="True" HeightRequest="45" Padding="0,1,0,0">
-                        <Entry WidthRequest="275" HeightRequest="50" Placeholder="Usuario o Correo" FontSize="15" HorizontalOptions="Center" VerticalOptions="Center" Keyboard="Email" HorizontalTextAlignment="Start" MaxLength="20" /> 
+                        <Entry x:Name="txtname" WidthRequest="275" HeightRequest="50" Placeholder="Nombre y Apellido" FontSize="15" HorizontalOptions="Center" VerticalOptions="Center" Keyboard="Email" HorizontalTextAlignment="Start" MaxLength="20" /> 
                     </Frame>
                 </StackLayout>
                 <StackLayout Grid.Row="3" HorizontalOptions="Center">
                     <Frame HasShadow="True" HeightRequest="45" Padding="0,1,0,0">
-                        <Entry WidthRequest="275" HeightRequest="50" Placeholder="Contraseña" FontSize="15" HorizontalOptions="Center" VerticalOptions="Center" Keyboard="Text" HorizontalTextAlignment="Start" MaxLength="20" />
+                        <Entry x:Name="txtmail" WidthRequest="275" HeightRequest="50" Placeholder="Correo" FontSize="15" HorizontalOptions="Center" VerticalOptions="Center" Keyboard="Text" HorizontalTextAlignment="Start" MaxLength="20" />
                     </Frame>
                 </StackLayout>
-                
+                <StackLayout Grid.Row="4" HorizontalOptions="Center">
+                    <Frame HasShadow="True" HeightRequest="45" Padding="0,1,0,0">
+                        <Entry x:Name="txtpass" WidthRequest="275" HeightRequest="50" Placeholder="Contraseña" FontSize="15" HorizontalOptions="Center" VerticalOptions="Center" Keyboard="Text" HorizontalTextAlignment="Start" MaxLength="20" />
+                    </Frame>
+                </StackLayout>
+
                 <!--Espacio para los demas campos-->
 
                 <StackLayout Grid.Row="7" HorizontalOptions="Center" WidthRequest="275" Orientation="Vertical" Margin="15">
                     <Frame HasShadow="True" Padding="0,4,0,4">
-                        <Button Text="Aceptar" HeightRequest="35" TextColor="#4b995d" BackgroundColor="White" FontSize="12" FontAttributes="Bold" />
+                        <Button Text="Aceptar" HeightRequest="35" TextColor="#4b995d" BackgroundColor="White" FontSize="12" FontAttributes="Bold" Clicked="Button_Clicked" />
                     </Frame>
                     <ActivityIndicator Color="#4b995d"></ActivityIndicator>
                 </StackLayout>

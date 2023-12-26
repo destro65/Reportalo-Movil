@@ -6,9 +6,9 @@
              IconImageSource="perfil.png">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
+            <Label Text=""
                 VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+                HorizontalOptions="CenterAndExpand" x:Name="lbluser"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

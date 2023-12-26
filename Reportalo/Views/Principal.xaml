@@ -6,14 +6,14 @@
              IconImageSource="bus.png">
     <ContentPage.Content>
         <StackLayout>
-            <ListView x:Name="vistadia" HasUnevenRows="True" ItemTapped="vistadia_ItemTapped"  IsPullToRefreshEnabled="True" IsRefreshing="True" >
+            <ListView x:Name="vistadia" HasUnevenRows="True" ItemTapped="vistadia_ItemTapped"  IsPullToRefreshEnabled="True" IsRefreshing="True" SeparatorColor="SpringGreen" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout>
                                 <Label Text="{Binding created_at}" ></Label>
-                                <Label Text="{Binding carro_id}" FontSize="Large" FontAttributes="Bold"></Label>
-                                <Label Text="{Binding ruta_id}" TranslationY="-2"></Label>
+                                <Label Text="{Binding nombre}" FontSize="Large" FontAttributes="Bold"></Label>
+                                <Label Text="{Binding registro}" TranslationY="-2" ></Label>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

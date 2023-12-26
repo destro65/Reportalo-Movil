@@ -7,14 +7,22 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+
 namespace Reportalo.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Perfil : ContentPage
     {
-        public Perfil()
+        private object usuario;
+
+        public Perfil(string usuario)
         {
+            
             InitializeComponent();
+            lbluser.Text = usuario;
+            
         }
+
+        
     }
 }

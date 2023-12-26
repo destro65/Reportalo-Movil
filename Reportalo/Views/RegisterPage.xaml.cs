@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySqlConnector;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,5 +17,20 @@ namespace Reportalo.Views
 		{
 			InitializeComponent ();
 		}
-	}
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            var conexion = new MySqlConnection(Properties.Resources.Conexion);
+            conexion.Open();
+
+
+            var cmd = new MySqlCommand("insert into users(name,email,password) values('"+txtname.Text+"','"+txtmail.Text+"','"+txtpass.Text+"')", conexion);
+            var rd = cmd.ExecuteReader();
+            conexion.Close();
+            DisplayAlert("Alerta", "Usuario Registrado con exito", "ok");
+            Navigation.PushAsync(new LoginPage());
+
+
+        }
+    }
 }

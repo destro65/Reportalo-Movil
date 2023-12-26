@@ -13,10 +13,14 @@ namespace Reportalo.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Menu : TabbedPage
     {
+        private object usuario;
+
         public Menu(string id)
         {
+                    
             InitializeComponent();
             txtid.Text = id;
+            usuario = id;
 
             var con = new MySqlConnection(Properties.Resources.Conexion);
             con.Open();
@@ -26,10 +30,17 @@ namespace Reportalo.Views
             txtid.Text = rd.GetString("name").ToString();
 
         }
-
+        
         private void ToolbarItem_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new LoginPage());
+        }
+
+        
+        public void ToolbarItem_Clicked_1(object sender, EventArgs e)
+        {
+            
+            Navigation.PushAsync(new Perfil((string)usuario));
         }
     }
 }

@@ -34,14 +34,14 @@ namespace Reportalo.Views
 
             var cmd = new MySqlCommand("select * from users where email='" + txtuser.Text + "'and password='" + txtpass.Text +"'", conexion);
             var rd= cmd.ExecuteReader ();
-
-
+            
+            
 
             if(rd.Read())
             {
                 DisplayAlert("Aviso", "Informacion Correcta", "Ok");
                 id = rd.GetInt16("id").ToString();
-				
+                
                 Navigation.PushAsync(new Menu(id));
             }
             else

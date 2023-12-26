@@ -4,9 +4,21 @@
              x:Class="Reportalo.Views.Registros">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Label Text="" x:Name="txtidregistro"/>
+            <ListView x:Name="vistaregistro" HasUnevenRows="True" IsPullToRefreshEnabled="True" IsRefreshing="True" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Label Text="{Binding hora}" ></Label>
+                                <Label Text="{Binding serie35}" FontSize="Large" FontAttributes="Bold"></Label>
+                                <Label Text="{Binding serie17}" TranslationY="-2" ></Label>
+                                <Label Text="{Binding serie10}" TranslationY="-2" ></Label>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
