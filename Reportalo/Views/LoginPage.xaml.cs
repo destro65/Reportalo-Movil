@@ -1,4 +1,5 @@
 ﻿using MySqlConnector;
+using Reportalo.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.Xaml;
+
 
 namespace Reportalo.Views
 {
@@ -39,14 +42,18 @@ namespace Reportalo.Views
 
             if(rd.Read())
             {
-                DisplayAlert("Aviso", "Informacion Correcta", "Ok");
+                var toast = DependencyService.Get<IToastService>();
+                toast?.ShowToast("Usuario Logeado");                
+                //DisplayAlert("Aviso", "Informacion Correcta", "Ok");
                 id = rd.GetInt16("id").ToString();
                 
                 Navigation.PushAsync(new Menu(id));
             }
             else
             {
-                DisplayAlert("Aviso", "Usuario no Registrado", "Ok");
+                var toast = DependencyService.Get<IToastService>();
+                toast?.ShowToast("Usuario No Registrado");
+                //DisplayAlert("Aviso", "Usuario no Registrado", "Ok");
             }
 
             

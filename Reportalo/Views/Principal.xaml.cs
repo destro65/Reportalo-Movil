@@ -39,12 +39,9 @@ namespace Reportalo.Views
 
 		private void data_list()
 		{
-			
+			//
 			var fecha = DateTime.Now.ToString("yyyy-MM-dd");
-			
-            //var fecha = "2023-12-26";
-
-            var conexion = new MySqlConnection(Properties.Resources.Conexion);
+			var conexion = new MySqlConnection(Properties.Resources.Conexion);
 			conexion.Open ();
 			var cmd = new MySqlCommand("select registros.id, rutas.nombre, carros.registro from registros INNER JOIN rutas on registros.ruta_id=rutas.id INNER JOIN carros on registros.carro_id=carros.id WHERE registros.fecha='"+fecha+"';", conexion);
 			

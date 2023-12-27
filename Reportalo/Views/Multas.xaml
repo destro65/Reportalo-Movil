@@ -6,9 +6,19 @@
              IconImageSource="multa.png">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <ListView x:Name="vistamulta" HasUnevenRows="True" IsPullToRefreshEnabled="True" IsRefreshing="True" SeparatorColor="SpringGreen" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Label Text="{Binding created_at}" ></Label>
+                                <Label Text="{Binding nombre}" FontSize="Large" FontAttributes="Bold"></Label>
+                                <Label Text="{Binding registro}" TranslationY="-2" ></Label>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
