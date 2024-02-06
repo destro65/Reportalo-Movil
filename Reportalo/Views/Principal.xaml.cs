@@ -1,4 +1,5 @@
 ﻿using MySqlConnector;
+using Reportalo.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,8 +23,10 @@ namespace Reportalo.Views
 		{
 			InitializeComponent ();
 			data_list();
-			
-		}
+            var toast = DependencyService.Get<IToastService>();
+            toast?.ShowToast("Seleccione un Registro para ver el detalle");
+
+        }
 
 		public class listadia
 		{

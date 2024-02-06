@@ -1,4 +1,5 @@
 ﻿using MySqlConnector;
+using Reportalo.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,8 @@ namespace Reportalo.Views
         {
             InitializeComponent();
             data_list();
+            var toast = DependencyService.Get<IToastService>();
+            toast?.ShowToast("Seleccione un Multa para ver el detalle");
         }
         public class listamulta
         {
@@ -52,6 +55,11 @@ namespace Reportalo.Views
             }
             rd.Close();
             vistamulta.ItemsSource = listamultas;
+        }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new IngresarMulta());
         }
     }
 }

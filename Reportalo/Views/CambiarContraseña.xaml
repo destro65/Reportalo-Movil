@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Reportalo.Views.CambiarContraseña">
+    <ContentPage.Content>
+        <StackLayout>            
+            <Label x:Name="lbluid" Text=""
+    VerticalOptions="CenterAndExpand" 
+    HorizontalOptions="CenterAndExpand" IsVisible="false"/>
+            
+            <StackLayout Grid.Row="1" HorizontalOptions="Center">
+                <Label Text="Ingrese la nueva Contraseña" TextColor="#B4995D" FontSize="18" WidthRequest="300" FontAttributes="None"/>
+            </StackLayout>
+            
+            <StackLayout Grid.Column="0" Grid.Row="2" Spacing="10">
+                
+                <Entry Placeholder="Contraseña" TextColor="#333333" FontSize="Large"  HorizontalOptions="Fill" IsPassword="True" x:Name="txtpass" Margin="50,4,50,4" />
+            </StackLayout>
+            <StackLayout Grid.Row="7" HorizontalOptions="Center" WidthRequest="275" Orientation="Vertical" Margin="15">
+                <Frame HasShadow="True" Padding="0,4,0,4">
+                    <Button Text="Aceptar" HeightRequest="35" TextColor="#4b995d" BackgroundColor="White" FontSize="12" FontAttributes="Bold" Clicked="Button_Clicked" />
+                </Frame>
+                <ActivityIndicator Color="#4b995d"></ActivityIndicator>
+            </StackLayout>
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

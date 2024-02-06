@@ -10,8 +10,8 @@
             <Label Text="Bienvenido!!!!!!!!!"  HorizontalOptions="CenterAndExpand" FontSize="Large"></Label>
             <Image Source="perfil.png" Scale="0.7" ></Image>
             <StackLayout >
-                <Entry Placeholder="Nombre" TextColor="#333333" FontSize="Medium"   x:Name="txtuser" IsEnabled="False"/>
-                <Entry Placeholder="Correo" TextColor="#333333" FontSize="Medium"   x:Name="txtmail" IsEnabled="False" />
+                <Entry Placeholder="Nombre" TextColor="#333333" FontSize="Medium" FontAttributes="Bold"  x:Name="txtuser" IsEnabled="False"/>
+                <Entry Placeholder="Correo" TextColor="#333333" FontSize="Medium"  FontAttributes="Bold" x:Name="txtmail" IsEnabled="False" />
                 <Entry Placeholder="Contraseña" TextColor="#333333" FontSize="Medium"   IsPassword="True" x:Name="txtclave"/>
                 <Entry Placeholder="Repita su Contraseña" TextColor="#333333" FontSize="Medium"   IsPassword="True" x:Name="txtclave1"/>
             </StackLayout>

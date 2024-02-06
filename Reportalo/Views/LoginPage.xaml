@@ -1,49 +1,76 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Reportalo.Views.LoginPage">
+             x:Class="Reportalo.Views.LoginPage"
+             Title="Login" 
+             >
     <ContentPage.Content>
-        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+        <Grid>
+            <Image Source="fondo1.jpg" Aspect="AspectFill"/>
+            <BoxView Color="AliceBlue" Opacity="0.8"/>
+        
+        <StackLayout VerticalOptions="CenterAndExpand" >
             <Grid>
+                
                 <Grid.RowDefinitions>
                     <RowDefinition Height="100"/>
-                    <RowDefinition Height="100"/>
-                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="200"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="50"/>
                     <RowDefinition Height="200"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
+                    <ColumnDefinition/>                    
                 </Grid.ColumnDefinitions>
                 
                 <StackLayout HorizontalOptions="Center" Grid.Column="0" Grid.Row="0" Margin="0,0,0,20">
-                    <Image Source="splashN" HeightRequest="100" WidthRequest="100"/>
+                    <Image Source="splashN" HeightRequest="100" WidthRequest="100" Opacity="2"/>
                 </StackLayout>
 
                 <StackLayout HorizontalOptions="Center" Grid.Column="0" Grid.Row="1">
-                    <Label Text="Bienvenido a" TextColor="#333333" FontSize="16" FontAttributes="None" HorizontalOptions="Center"/>
-                    <Label Text="*********Reportalo*********" TextColor="#333333" FontSize="16" FontAttributes="None" HorizontalOptions="Center"/>
+                    <Label Text="Bienvenido a" TextColor="#333333" FontSize="Large" FontAttributes="None" HorizontalOptions="Center"/>
+                    <Label Text="Reportalo" TextColor="#333333" FontSize="Medium" FontAttributes="None" HorizontalOptions="Center"/>
                 </StackLayout>
 
-                <StackLayout HorizontalOptions="CenterAndExpand" Grid.Column="0" Grid.Row="2">
-                    <Entry Placeholder="Usuario" TextColor="#333333" FontSize="Medium"  HorizontalOptions="StartAndExpand" x:Name="txtuser"/>
-                    <Entry Placeholder="Contraseña" TextColor="#333333" FontSize="Medium"  HorizontalOptions="Start" IsPassword="True" x:Name="txtpass"/>
+
+                <StackLayout Grid.Column="0" Grid.Row="2" Spacing="10">
+                    <Entry Placeholder="Usuario" TextColor="#333333" FontSize="Large" HorizontalOptions="Fill" x:Name="txtuser" Margin="50,4,50,4" />
+                    <Entry Placeholder="Contraseña" TextColor="#333333" FontSize="Large"  HorizontalOptions="Fill" IsPassword="True" x:Name="txtpass" Margin="50,4,50,4" />
                 </StackLayout>
 
-                <StackLayout HorizontalOptions="Center" Grid.Column="0" Grid.Row="3" Spacing="5">
-                    <Frame Padding="0,4,0,4" HasShadow="True">
-                        <Button Text="Ingresar" HeightRequest="35" WidthRequest="185" TextColor="#333333" BackgroundColor="White" FontSize="10" Clicked="Button_Clicked_1"/>
+                <StackLayout Grid.Column="0" Grid.Row="3" Orientation="Horizontal">
+                        <Label Text="Registrarse" Margin="55,4,0,0" FontSize="Medium">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped">
+                                    
+                                </TapGestureRecognizer>
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Label Text="Olvido su contraseña" HorizontalOptions="EndAndExpand" FontSize="Medium" Margin="20,4,40,0">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1">
+
+                                </TapGestureRecognizer>
+                            </Label.GestureRecognizers>
+                        </Label>
+                </StackLayout>
+
+                <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="0" Grid.Row="4" Margin="50,-100,50,4">
+                    <Frame HasShadow="True" CornerRadius="60">
+                        <Button Text="Ingresar" HeightRequest="35" WidthRequest="185"  TextColor="#333333" BackgroundColor="White" FontSize="15" Clicked="Button_Clicked_1"/>
                     </Frame >
-                    <Frame Padding="0,4,0,4" HasShadow="True">
+                    <!--<Frame Padding="0,0,0,0" HasShadow="True" CornerRadius="60">
                         <Button Text="Registrarse" HeightRequest="35" WidthRequest="185" TextColor="#333333" BackgroundColor="White" FontSize="10" Clicked="Button_Clicked"/>
-                    </Frame>
+                    </Frame>-->
                 </StackLayout>
 
-                <StackLayout HorizontalOptions="Center" Grid.Column="0" Grid.Row="4">
-                    <Label Text="Harold Martinez 2023, Derechos Reservados" TextColor="#333333" FontSize="10" FontAttributes="None" HorizontalOptions="Center"/>
-                                    </StackLayout>
+                <StackLayout HorizontalOptions="Center" Grid.Column="0" Grid.Row="5">
+                    <Label Text="Harold Martinez 2023, Derechos Reservados" TextColor="#333333" FontSize="15" FontAttributes="None" HorizontalOptions="FillAndExpand"/>
+                </StackLayout>
 
             </Grid>
         </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

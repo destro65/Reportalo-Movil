@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Reportalo.Views.RememberPage">
+             x:Class="Reportalo.Views.IngresarMulta">
     <ContentPage.Content>
         <StackLayout VerticalOptions="Start" HorizontalOptions="CenterAndExpand">
             <Grid RowSpacing="25">
@@ -23,13 +23,24 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <StackLayout Grid.Row="1" HorizontalOptions="Center">
-                    <Label Text="Recuperar Contraseña" TextColor="#B4995D" FontSize="18" WidthRequest="300" FontAttributes="None"/>
+                    <Label Text="Ingrese una Nueva Multa" TextColor="#B4995D" FontSize="18" WidthRequest="300" FontAttributes="None"/>
                 </StackLayout>
-                <StackLayout Grid.Row="2" HorizontalOptions="Center">
-                    <Frame HasShadow="True" HeightRequest="45" Padding="0,1,0,0">
-                        <Entry x:Name="txtcorreo" WidthRequest="275" HeightRequest="50" Placeholder="Ingrese su correo" FontSize="15" HorizontalOptions="Center" VerticalOptions="Center" Keyboard="Email" HorizontalTextAlignment="Start" MaxLength="20" />
-                    </Frame>
+                <StackLayout Grid.Row="2" >
+                    <Picker x:Name="ComboRuta" Title="Escoja la ruta" SelectedIndexChanged="ComboRuta_SelectedIndexChanged"></Picker>
+                    <Label x:Name="idruta" Text="" IsVisible="false"></Label>                    
                 </StackLayout>
+                <StackLayout Grid.Row="3" >
+                    <Picker x:Name="ComboCarro" Title="Escoja la unidad" SelectedIndexChanged="ComboCarro_SelectedIndexChanged"></Picker>
+                    <Label x:Name="idcarro" Text="" IsVisible="false"></Label>
+                </StackLayout>
+                <StackLayout Grid.Row="4" >
+                    
+                        <Entry x:Name="txtmotivo" Placeholder="Motivo de la Multa" />
+                    
+                </StackLayout>
+
+                <!--Espacio para los demas campos-->
+
                 <StackLayout Grid.Row="7" HorizontalOptions="Center" WidthRequest="275" Orientation="Vertical" Margin="15">
                     <Frame HasShadow="True" Padding="0,4,0,4">
                         <Button Text="Aceptar" HeightRequest="35" TextColor="#4b995d" BackgroundColor="White" FontSize="12" FontAttributes="Bold" Clicked="Button_Clicked" />

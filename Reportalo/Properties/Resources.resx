@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Conexion" xml:space="preserve">
-    <value>Server=192.168.0.102;Database=reporta;Uid=harold;Pwd=harold;</value>
+    <value>Server=192.168.100.26;Database=reporta;Uid=harold;Pwd=harold;</value>
     <comment>Conexion Local de MYSQL</comment>
   </data>
 </root>

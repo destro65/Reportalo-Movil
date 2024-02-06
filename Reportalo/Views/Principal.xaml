@@ -4,8 +4,12 @@
              x:Class="Reportalo.Views.Principal"
              Title="Registros"
              IconImageSource="bus.png">
+    
     <ContentPage.Content>
+        
         <StackLayout>
+            <!--<Image Source="Fondo.jpg" Aspect="Fill" Opacity="0.5"/>-->
+            
             <ListView x:Name="vistadia" HasUnevenRows="True" ItemTapped="vistadia_ItemTapped"  IsPullToRefreshEnabled="True" IsRefreshing="True" SeparatorColor="SpringGreen" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
