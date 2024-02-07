@@ -13,26 +13,26 @@ using Xamarin.Forms.Xaml;
 
 namespace Reportalo.Views
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class Principal : ContentPage
-	{
-        private string id { get; set; }
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class Principal : ContentPage
+    {
+        public string id { get; set; }
 
         public IList<listadia> listadias { get; set; }
-		public Principal ()
-		{
-			InitializeComponent ();
-			data_list();
+        public Principal()
+        {
+            InitializeComponent();
+            data_list();
             var toast = DependencyService.Get<IToastService>();
             toast?.ShowToast("Seleccione un Registro para ver el detalle");
 
         }
 
-		public class listadia
-		{
-			public string carro_id { get; set; }
-			public string ruta_id { get; set; }
-			public string created_at { get; set; }
+        public class listadia
+        {
+            public string carro_id { get; set; }
+            public string ruta_id { get; set; }
+            public string created_at { get; set; }
 
             public string nombre { get; set; }
 
@@ -40,45 +40,48 @@ namespace Reportalo.Views
             public string id { get; set; }
         }
 
-		private void data_list()
-		{
-			//
-			var fecha = DateTime.Now.ToString("yyyy-MM-dd");
-			var conexion = new MySqlConnection(Properties.Resources.Conexion);
-			conexion.Open ();
-			var cmd = new MySqlCommand("select registros.id, rutas.nombre, carros.registro from registros INNER JOIN rutas on registros.ruta_id=rutas.id INNER JOIN carros on registros.carro_id=carros.id WHERE registros.fecha='"+fecha+"';", conexion);
-			
-			var rd = cmd.ExecuteReader ();
+        public void data_list()
+        {
 
-			listadias = new List<listadia> ();
+            var fecha = DateTime.Now.ToString("yyyy-MM-dd");
+            var conexion = new MySqlConnection(Properties.Resources.Conexion);
+            conexion.Open();
+            var cmd = new MySqlCommand("select registros.id, rutas.nombre, carros.registro from registros INNER JOIN rutas on registros.ruta_id=rutas.id INNER JOIN carros on registros.carro_id=carros.id WHERE registros.fecha='" + fecha + "';", conexion);
 
-			while (rd.Read ())
-			{
-				listadias.Add( new listadia
-				{
+            var rd = cmd.ExecuteReader();
+
+            listadias = new List<listadia>();
+
+            while (rd.Read())
+            {
+                listadias.Add(new listadia
+                {
                     //created_at = rd.GetDateTime("created_at").ToString(),
-					nombre = rd.GetString("nombre").ToString(),
-					registro = rd.GetString("registro").ToString(),
+                    nombre = rd.GetString("nombre").ToString(),
+                    registro = rd.GetString("registro").ToString(),
                     id = rd.GetInt16("id").ToString()
 
                 }
-				);
-			}
-			rd.Close ();
+                );
+            }
+
+            rd.Close();
             vistadia.ItemsSource = listadias;
-		}
+
+        }
 
         public void vistadia_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             var conexion = new MySqlConnection(Properties.Resources.Conexion);
             conexion.Open();
-            var cmd = new MySqlCommand("select * from registros ;", conexion);			          
+            var cmd = new MySqlCommand("select * from registros ;", conexion);
             var rd = cmd.ExecuteReader();
-			rd.Read();
-			id = rd.GetInt16("id").ToString();
-
+            rd.Read();
+            id = rd.GetInt16("id").ToString();
+            data_list();
             Navigation.PushAsync(new Registros(id));
-			data_list();
+
+
         }
     }
 }

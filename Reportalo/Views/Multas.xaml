@@ -6,17 +6,41 @@
              IconImageSource="multa.png">
     <ContentPage.Content>
         <StackLayout>
-            <!--<Image Source="fondo1.jpg" Aspect="AspectFill" Opacity="0.3"/>-->
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30*" />
+                    <ColumnDefinition Width="30*" />
+                    
+                </Grid.ColumnDefinitions>
+                <Label  Grid.Column="0" Grid.Row="0" Text="Ruta" FontSize="25"/>
+                <Label  Grid.Column="1" Grid.Row="0" Text="Unidad" FontSize="25"/>
+
+
+            </Grid>
             
-            <ListView x:Name="vistamulta" HasUnevenRows="True" IsPullToRefreshEnabled="True" IsRefreshing="True" SeparatorColor="SpringGreen" >
+            <ListView x:Name="vistamulta" HasUnevenRows="True" SeparatorColor="SpringGreen" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout>
-                                <Label Text="{Binding created_at}" ></Label>
-                                <Label Text="{Binding nombre}" FontSize="Large" FontAttributes="Bold"></Label>
-                                <Label Text="{Binding registro}" TranslationY="-2" ></Label>
-                            </StackLayout>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="30*" />
+                                    <ColumnDefinition Width="30*" />
+                                    
+                                </Grid.ColumnDefinitions>
+                                
+                                <Label  Grid.Column="0" Text="{Binding nombre}" FontSize="17"/>
+                                <Label Grid.Column="1" Text="{Binding registro}" FontSize="17"/>
+                            </Grid>
+
+
+
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

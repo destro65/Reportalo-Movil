@@ -13,11 +13,13 @@ namespace Reportalo.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Registros : ContentPage
     {
+        private object ident;
         public IList<listaregistro> listaregistros { get; set; }
         public Registros(String id)
         {
             InitializeComponent();
-            txtidregistro.Text = id.ToString();
+            txtidregistro.Text = id;
+            ident = "22";
             data_list();
         }
 
@@ -34,11 +36,8 @@ namespace Reportalo.Views
         {
             var conexion = new MySqlConnection(Properties.Resources.Conexion);
             conexion.Open();
-            var cmd = new MySqlCommand("select * from dias  ;", conexion);
+            var cmd = new MySqlCommand("select * from dias where registro_id= '" + ident+ "'", conexion);
 
-            //        select rutas.nombre, carros.registro from registros 
-            //INNER JOIN rutas on registros.id = rutas.id
-            //INNER JOIN carros on registros.id = carros.id;
 
             var rd = cmd.ExecuteReader();
 
@@ -53,7 +52,6 @@ namespace Reportalo.Views
                     serie35 = rd.GetInt64("serie35").ToString(),
                     serie17 = rd.GetInt64("serie17").ToString(),
                     serie10 = rd.GetInt64("serie10").ToString()
-
                 }
                 );
             }

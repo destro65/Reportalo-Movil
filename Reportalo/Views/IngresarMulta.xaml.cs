@@ -25,8 +25,11 @@ namespace Reportalo.Views
             var conexion = new MySqlConnection(Properties.Resources.Conexion);
             conexion.Close();
             conexion.Open();
+            var fecha = DateTime.Now.ToString("yyyy-MM-dd");
+            var tiempo = DateTime.Now.ToLongTimeString();
+            var creacion = fecha + tiempo;
 
-            var cmd = new MySqlCommand("insert into multas (Hora,created_at,carro_id,ruta_id) values('"+ DateTime.Now.ToLongTimeString() + "','"+ DateTime.Now.ToString("yyyy-MM-dd") + "','"+idcarro.Text+"','"+idruta.Text+"')", conexion);
+            var cmd = new MySqlCommand("insert into multas (Hora,created_at,carro_id,ruta_id) values('"+ DateTime.Now.ToLongTimeString() + "','"+ DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss")+ "','"+idcarro.Text+"','"+idruta.Text+"')", conexion);
             var rd = cmd.ExecuteReader();
             var toast = DependencyService.Get<IToastService>();
             toast?.ShowToast("Multa Ingresada correctamente");

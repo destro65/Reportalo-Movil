@@ -46,7 +46,7 @@ namespace Reportalo.Views
             {
                 listamultas.Add(new listamulta
                 {
-                    //created_at = rd.GetDateTime("created_at").ToString(),
+                    //created_at = rd.GetString("created_at").ToString(),
                     nombre = rd.GetString("nombre").ToString(),
                     registro = rd.GetString("registro").ToString(),                   
 

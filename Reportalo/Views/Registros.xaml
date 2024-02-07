@@ -4,17 +4,46 @@
              x:Class="Reportalo.Views.Registros">
     <ContentPage.Content>
         <StackLayout>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20*" />
+                    <ColumnDefinition Width="30*" />
+                    <ColumnDefinition Width="30*" />
+                    <ColumnDefinition Width="30*" />
+                </Grid.ColumnDefinitions>
+                <Label  Grid.Column="0" Grid.Row="0" Text="Hora" FontSize="22"/>
+                <Label  Grid.Column="1" Grid.Row="0" Text="Serie 35" FontSize="22"/>
+                <Label Grid.Column="2" Grid.Row="0" Text="Serie 17" FontSize="22"/>
+                <Label Grid.Column="3" Grid.Row="0" Text="Serie 10" FontSize="22"/>
+
+            </Grid>
             <Label Text="" x:Name="txtidregistro"/>
             <ListView x:Name="vistaregistro" HasUnevenRows="True" IsPullToRefreshEnabled="True" IsRefreshing="True" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout>
-                                <Label Text="{Binding hora}" ></Label>
-                                <Label Text="{Binding serie35}" FontSize="Large" FontAttributes="Bold"></Label>
-                                <Label Text="{Binding serie17}" TranslationY="-2" ></Label>
-                                <Label Text="{Binding serie10}" TranslationY="-2" ></Label>
-                            </StackLayout>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="16*" />
+                                    <ColumnDefinition Width="30*" />
+                                    <ColumnDefinition Width="30*" />
+                                    <ColumnDefinition Width="30*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Label  Grid.Column="0" Text="{Binding hora}"/>
+                                <Label  Grid.Column="1" Text="{Binding serie35}"/>
+                                <Label Grid.Column="2" Text="{Binding serie17}"/>
+                                <Label Grid.Column="3" Text="{Binding serie10}"/>
+                            </Grid>
+
+
+
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
