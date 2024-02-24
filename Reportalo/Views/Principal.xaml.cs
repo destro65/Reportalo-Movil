@@ -7,7 +7,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Threading;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -16,25 +16,41 @@ namespace Reportalo.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Principal : ContentPage
     {
-        public string id { get; set; }
+        public object id;
 
         public IList<listadia> listadias { get; set; }
+        private Timer timer;
         public Principal()
         {
             InitializeComponent();
+            InitializeTimer();
             data_list();
             var toast = DependencyService.Get<IToastService>();
             toast?.ShowToast("Seleccione un Registro para ver el detalle");
 
         }
+        private void InitializeTimer()
+        {
+            // Configura un temporizador que llamará a la función UpdateDataList cada 5 minutos (300,000 milisegundos).
+            timer = new Timer(UpdateDataList, null, 0, 5000);
+        }
+
+        public void UpdateDataList(object state)
+        {
+            // Esta función se ejecutará cada vez que el temporizador alcance su intervalo.
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                data_list();
+            });
+        }
 
         public class listadia
         {
-            
             public string nombre { get; set; }
 
             public string registro { get; set; }
             public string id { get; set; }
+
         }
 
         public void data_list()
@@ -44,10 +60,11 @@ namespace Reportalo.Views
             var conexion = new MySqlConnection(Properties.Resources.Conexion);
             conexion.Open();
             var cmd = new MySqlCommand("select registros.id, rutas.nombre, carros.registro from registros INNER JOIN rutas on registros.ruta_id=rutas.id INNER JOIN carros on registros.carro_id=carros.id WHERE registros.fecha='" + fecha + "';", conexion);
-            
+
             var rd = cmd.ExecuteReader();
 
             listadias = new List<listadia>();
+
 
             while (rd.Read())
             {
@@ -56,20 +73,22 @@ namespace Reportalo.Views
                     //created_at = rd.GetDateTime("created_at").ToString(),
                     nombre = rd.GetString("nombre").ToString(),
                     registro = rd.GetString("registro").ToString(),
-                    id = rd.GetInt16("id").ToString()
-
+                    id = rd.GetInt32("id").ToString(),
                 }
                 );
             }
-
-            rd.Close();
             vistadia.ItemsSource = listadias;
 
         }
 
         public void vistadia_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            Navigation.PushAsync(new Registros());
+
+            if (e.Item is listadia selectedDia)
+            {
+                string selectedId = selectedDia.id;
+                Navigation.PushAsync(new Registros(selectedId));
+            }
 
         }
     }

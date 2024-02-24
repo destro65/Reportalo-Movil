@@ -17,15 +17,15 @@
                     <ColumnDefinition Width="30*" />
                     <ColumnDefinition Width="30*" />
                 </Grid.ColumnDefinitions>
-                <Label  Grid.Column="0" Grid.Row="0" Text="Hora" FontSize="22"/>
-                <Label  Grid.Column="1" Grid.Row="0" Text="Serie 35" FontSize="22"/>
-                <Label Grid.Column="2" Grid.Row="0" Text="Serie 17" FontSize="22"/>
-                <Label Grid.Column="3" Grid.Row="0" Text="Serie 10" FontSize="22"/>
-                <Label Grid.Column="4" Grid.Row="0" Text="Vendidos" FontSize="22"/>
-                <Label Grid.Column="5" Grid.Row="0" Text="Estimado" FontSize="22"/>
+                <Label  Grid.Column="0" Grid.Row="0" Text="Hora" FontSize="20" HorizontalOptions="End"/>
+                <Label  Grid.Column="1" Grid.Row="0" Text="Serie35" FontSize="19" HorizontalOptions="End"/>
+                <Label Grid.Column="2" Grid.Row="0" Text="Serie17" FontSize="19" HorizontalOptions="End"/>
+                <Label Grid.Column="3" Grid.Row="0" Text="Serie10" FontSize="19" HorizontalOptions="End"/>
+                <Label Grid.Column="4" Grid.Row="0" Text="Vendidos" FontSize="15" HorizontalOptions="End"/>
+                <Label Grid.Column="5" Grid.Row="0" Text="Estimado" FontSize="15" HorizontalOptions="End"/>
 
             </Grid>
-            <Label Text="" x:Name="txtidregistro"/>
+            <Label Text="" x:Name="txtidregistro" IsVisible="false"/>
             <ListView x:Name="vistaregistro" HasUnevenRows="True" IsPullToRefreshEnabled="True" IsRefreshing="True" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -35,7 +35,7 @@
                                     <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="16*" />
+                                    <ColumnDefinition Width="26*" />
                                     <ColumnDefinition Width="30*" />
                                     <ColumnDefinition Width="30*" />
                                     <ColumnDefinition Width="30*" />
@@ -43,12 +43,12 @@
                                     <ColumnDefinition Width="30*" />
                                 </Grid.ColumnDefinitions>
 
-                                <Label  Grid.Column="0" Text="{Binding hora}"/>
-                                <Label  Grid.Column="1" Text="{Binding serie35}"/>
-                                <Label Grid.Column="2" Text="{Binding serie17}"/>
-                                <Label Grid.Column="3" Text="{Binding serie10}"/>
-                                <Label Grid.Column="4" Text="{Binding vendidos}"/>
-                                <Label Grid.Column="5" Text="{Binding estimado}"/>
+                                <Label  Grid.Column="0" Text="{Binding hora}" HorizontalOptions="End"/>
+                                <Label  Grid.Column="1" Text="{Binding serie35}" HorizontalOptions="End"/>
+                                <Label Grid.Column="2" Text="{Binding serie17}" HorizontalOptions="End"/>
+                                <Label Grid.Column="3" Text="{Binding serie10}" HorizontalOptions="End"/>
+                                <Label Grid.Column="4" Text="{Binding vendidos}" HorizontalOptions="End"/>
+                                <Label Grid.Column="5" Text="{Binding estimado}" HorizontalOptions="End"/>
                             </Grid>
 
 
