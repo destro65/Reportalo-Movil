@@ -2,9 +2,12 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Reportalo.Views.Registros"
+             xmlns:converters="clr-namespace:TuNamespace.Converters"
              >
     <ContentPage.Content Orientation="Landscape">
+        
         <StackLayout>
+            
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
@@ -27,9 +30,10 @@
             </Grid>
             <Label Text="" x:Name="txtidregistro" IsVisible="false"/>
             <ListView x:Name="vistaregistro" HasUnevenRows="True" IsPullToRefreshEnabled="True" IsRefreshing="True" >
+                
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
+                        <ViewCell>                            
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" />
@@ -58,5 +62,6 @@
                 </ListView.ItemTemplate>
             </ListView>
         </StackLayout>
+        
     </ContentPage.Content>
 </ContentPage>

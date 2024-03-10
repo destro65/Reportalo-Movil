@@ -1,4 +1,5 @@
 ﻿using MySqlConnector;
+using Plugin.LocalNotifications;
 using Reportalo.Services;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using static Reportalo.Views.Multas;
+
 
 namespace Reportalo.Views
 {
@@ -31,9 +33,29 @@ namespace Reportalo.Views
 
             var cmd = new MySqlCommand("insert into multas (Hora,created_at,carro_id,ruta_id) values('"+ DateTime.Now.ToLongTimeString() + "','"+ DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss")+ "','"+idcarro.Text+"','"+idruta.Text+"')", conexion);
             var rd = cmd.ExecuteReader();
-            var toast = DependencyService.Get<IToastService>();
-            toast?.ShowToast("Multa Ingresada correctamente");
+
             
+            var ruta = idruta;
+            var carro = idcarro;
+            var conexion1 = new MySqlConnection(Properties.Resources.Conexion);
+            conexion1.Open();
+            var cmd1 = new MySqlCommand("select * from rutas where id='" + idruta.Text + "'", conexion1);
+            var rd1 = cmd1.ExecuteReader();
+            var conexion2 = new MySqlConnection(Properties.Resources.Conexion);
+            conexion2.Open();
+            var cmd2 = new MySqlCommand("select * from carros where id='" + idcarro.Text + "'", conexion2);
+            var rd2 = cmd2.ExecuteReader();
+
+            rd1.Read();
+            String ruta1= rd1.GetString("nombre").ToString();
+            rd2.Read();
+            String carro1 = rd2.GetString("registro").ToString();
+            
+
+            conexion2.Close();
+
+            CrossLocalNotifications.Current.Show("Multa Aplicada", "La unidad: "+carro1+", En la Ruta: "+ruta1+", Ha sido multada", 1, DateTime.Now.AddSeconds(5));
+            //Navigation.PushAsync(new Multas());
 
         }
 

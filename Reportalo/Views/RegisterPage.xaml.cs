@@ -30,7 +30,7 @@ namespace Reportalo.Views
                 conexion.Close();
                 DisplayAlert("Alerta", "Usuario Registrado con exito", "ok");
                 Navigation.PushAsync(new LoginPage());
-            } catch (Exception ex)
+            } catch (Exception)
             {
                 DisplayAlert("Alerta", "Correo ya registrado, ingrese otro o recupera la contraseña", "ok");
                 

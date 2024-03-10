@@ -1,14 +1,15 @@
 ﻿using MySqlConnector;
+using Plugin.LocalNotifications;
 using Reportalo.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.Xaml;
+
 
 
 namespace Reportalo.Views
@@ -22,6 +23,7 @@ namespace Reportalo.Views
 		{
 			InitializeComponent ();
             NavigationPage.SetHasBackButton(this, false);
+
         }
 
         private void Button_Clicked(object sender, EventArgs e)
@@ -30,8 +32,10 @@ namespace Reportalo.Views
 			Navigation.PushAsync (new RegisterPage ());
         }
 
+
         private void Button_Clicked_1(object sender, EventArgs e)
         {
+
             var conexion = new MySqlConnection(Properties.Resources.Conexion);
             conexion.Open();
 
@@ -39,6 +43,8 @@ namespace Reportalo.Views
             var cmd = new MySqlCommand("select * from users where email='" + txtuser.Text + "'and password='" + txtpass.Text + "'", conexion);
             var rd = cmd.ExecuteReader();
 
+            // En tu código compartido (Xamarin.Forms)
+            //CrossLocalNotifications.Current.Show("Título", "Mensaje de la notificación", 1, DateTime.Now.AddSeconds(5));
 
 
             if (rd.Read())
@@ -47,7 +53,7 @@ namespace Reportalo.Views
                 toast?.ShowToast("Usuario Logeado");
                 //DisplayAlert("Aviso", "Informacion Correcta", "Ok");
                 id = rd.GetInt16("id").ToString();
-
+                                
                 Navigation.PushAsync(new Menu(id));
             }
             else

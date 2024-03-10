@@ -31,7 +31,7 @@ namespace Reportalo.Views
         }
         private void InitializeTimer()
         {
-            // Configura un temporizador que llamará a la función UpdateDataList cada 5 minutos (300,000 milisegundos).
+            // Configura un temporizador que llamará a la función UpdateDataList cada 5 segundos
             timer = new Timer(UpdateDataList, null, 0, 5000);
         }
 

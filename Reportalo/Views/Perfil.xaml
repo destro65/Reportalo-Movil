@@ -8,16 +8,16 @@
         <StackLayout>
             <Label Text="" x:Name="lbluser" IsEnabled="False" />
             <Label Text="Bienvenido!!!!!!!!!"  HorizontalOptions="CenterAndExpand" FontSize="Large"></Label>
-            <Image Source="perfil.png" Scale="0.7" ></Image>
+            <Image Source="perfil.png" Scale="0.4" ></Image>
             <StackLayout >
-                <Entry Placeholder="Nombre" TextColor="#333333" FontSize="Medium" FontAttributes="Bold"  x:Name="txtuser" IsEnabled="False"/>
-                <Entry Placeholder="Correo" TextColor="#333333" FontSize="Medium"  FontAttributes="Bold" x:Name="txtmail" IsEnabled="False" />
-                <Entry Placeholder="Contraseña" TextColor="#333333" FontSize="Medium"   IsPassword="True" x:Name="txtclave"/>
-                <Entry Placeholder="Repita su Contraseña" TextColor="#333333" FontSize="Medium"   IsPassword="True" x:Name="txtclave1"/>
+                <Entry Placeholder="Nombre" TextColor="#333333" FontSize="Medium" HorizontalOptions="Fill" Margin="50,1,50,1"  x:Name="txtuser" IsEnabled="False"/>
+                <Entry Placeholder="Correo" TextColor="#333333" FontSize="Medium" HorizontalOptions="Fill" Margin="50,1,50,1" x:Name="txtmail" IsEnabled="False" />
+                <Entry Placeholder="Contraseña" TextColor="#333333" FontSize="Medium" HorizontalOptions="Fill" Margin="50,1,50,1" IsPassword="True" x:Name="txtclave"/>
+                <Entry Placeholder="Repita su Contraseña" TextColor="#333333" FontSize="Medium" HorizontalOptions="Fill" Margin="50,1,50,1" IsPassword="True" x:Name="txtclave1"/>
             </StackLayout>
 
             <StackLayout HorizontalOptions="Center" Spacing="10">
-                <Button Text="Modificar Contraseña" HeightRequest="80" WidthRequest="200" TextColor="AntiqueWhite" BackgroundColor="Blue" FontSize="15" Clicked="Button_Clicked"/>
+                <Button Text="Modificar Contraseña" HeightRequest="60" WidthRequest="150" TextColor="AntiqueWhite" BackgroundColor="Blue" FontSize="15" Clicked="Button_Clicked"/>
                            
             </StackLayout>
             

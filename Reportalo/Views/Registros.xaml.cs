@@ -37,34 +37,48 @@ namespace Reportalo.Views
             public string registro_id { get; set; }
 
         }
+        
         public void data_list()
         {
-
             var conexion = new MySqlConnection(Properties.Resources.Conexion);
             conexion.Open();
             var cmd = new MySqlCommand("select * from vista_registro WHERE registro_id='" + txtidregistro.Text + "'", conexion);
-            //select dias.registro_id, dias.hora, dias.serie35,dias.serie17,dias.serie10,dias.vendidos, estimados.estimado from dias INNER JOIN estimados on estimados.id = estimados.id;
-            //select dias.id, dias.hora, dias.serie35,dias.serie17,dias.serie10,dias.vendidos, estimados.estimado,dias.registro_id from dias LEFT JOIN estimados on dias.id = estimados.id;
             var rd = cmd.ExecuteReader();
 
             listaregistros = new List<listaregistro>();
+            List<int> datosEstimados = new List<int> { 10, 20, 30, 40, 50 }; // Ejemplo de lista de datos estimados
+
+            int estimadoIndex = 0; // Índice para recorrer la lista de datos estimados
+
             while (rd.Read())
             {
                 listaregistros.Add(new listaregistro
                 {
-                    //created_at = rd.GetDateTime("created_at").ToString(),
                     hora = rd["hora"] is DBNull ? string.Empty : rd.GetTimeSpan("hora").ToString(),
                     serie35 = rd["serie35"] is DBNull ? string.Empty : rd.GetInt64("serie35").ToString(),
                     serie17 = rd["serie17"] is DBNull ? string.Empty : rd.GetInt64("serie17").ToString(),
                     serie10 = rd["serie10"] is DBNull ? string.Empty : rd.GetInt64("serie10").ToString(),
                     vendidos = rd["vendidos"] is DBNull ? string.Empty : rd.GetInt64("vendidos").ToString(),
-                    estimado = rd["estimado"] is DBNull ? string.Empty : rd.GetInt16("estimado").ToString(),
+
+                    // Asignar datos estimados desde la lista
+                    estimado = estimadoIndex < datosEstimados.Count ? datosEstimados[estimadoIndex].ToString() : string.Empty,
+
                     registro_id = rd["registro_id"] is DBNull ? string.Empty : rd.GetInt16("registro_id").ToString(),
-                }
-                );
+
+                });
+
+                estimadoIndex++; // Mover al siguiente dato estimado en la lista
+
+                
             }
+            
+
             rd.Close();
             vistaregistro.ItemsSource = listaregistros;
+
+
         }
+
+
     }
 }

@@ -31,6 +31,10 @@ namespace Reportalo.Views
 
         }
 
+        public Menu()
+        {
+        }
+
         private void ToolbarItem_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new LoginPage());
