@@ -35,7 +35,7 @@ namespace Reportalo.Views
             public string vendidos { get; set; }
             public string estimado { get; set; }
             public string registro_id { get; set; }
-
+            public Color Color { get; internal set; }
         }
         
         public void data_list()
@@ -52,7 +52,7 @@ namespace Reportalo.Views
 
             while (rd.Read())
             {
-                listaregistros.Add(new listaregistro
+                var registro = new listaregistro
                 {
                     hora = rd["hora"] is DBNull ? string.Empty : rd.GetTimeSpan("hora").ToString(),
                     serie35 = rd["serie35"] is DBNull ? string.Empty : rd.GetInt64("serie35").ToString(),
@@ -64,21 +64,53 @@ namespace Reportalo.Views
                     estimado = estimadoIndex < datosEstimados.Count ? datosEstimados[estimadoIndex].ToString() : string.Empty,
 
                     registro_id = rd["registro_id"] is DBNull ? string.Empty : rd.GetInt16("registro_id").ToString(),
+                };
 
-                });
+                // Realizar la comparación entre vendidos y estimado
+                if (!string.IsNullOrEmpty(registro.vendidos) && !string.IsNullOrEmpty(registro.estimado))
+                {
+                    int vendidos = Convert.ToInt32(registro.vendidos);
+                    int estimado = Convert.ToInt32(registro.estimado);
+
+                    if (vendidos < estimado)
+                    {
+                        registro.Color = Color.Red; // Asignar color rojo
+                    }
+                    else
+                    {
+                        registro.Color = Color.Green; // Asignar color verde
+                    }
+                }
+
+                listaregistros.Add(registro);
 
                 estimadoIndex++; // Mover al siguiente dato estimado en la lista
-
-                
             }
-            
+
+
 
             rd.Close();
             vistaregistro.ItemsSource = listaregistros;
 
 
         }
+        public class ComparisonToColorConverter : IValueConverter
+        {
+            public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+            {
+                if (value is Color color)
+                {
+                    return color;
+                }
 
+                return Color.Default;
+            }
+
+            public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+            {
+                throw new NotImplementedException();
+            }
+        }
 
     }
 }

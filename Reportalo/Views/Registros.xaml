@@ -1,9 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:converters="clr-namespace:Reportalo.Converters"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Reportalo.Views.Registros"
              >
-    <ContentPage.Content Orientation="Landscape">
+    <ContentPage.Content Orientation="Landscape" xmlns:converters="clr-namespace:Reportalo.Converters">
         
         <StackLayout>
             
@@ -32,8 +33,8 @@
                 
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>                            
-                            <Grid>
+                        <ViewCell>
+                            <Grid BackgroundColor="{Binding Color}">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
@@ -46,12 +47,15 @@
                                     <ColumnDefinition Width="30*" />
                                 </Grid.ColumnDefinitions>
 
-                                <Label  Grid.Column="0" Text="{Binding hora}" HorizontalOptions="End"/>
-                                <Label  Grid.Column="1" Text="{Binding serie35}" HorizontalOptions="End"/>
-                                <Label Grid.Column="2" Text="{Binding serie17}" HorizontalOptions="End"/>
-                                <Label Grid.Column="3" Text="{Binding serie10}" HorizontalOptions="End"/>
-                                <Label Grid.Column="4" Text="{Binding vendidos}" HorizontalOptions="End"/>
-                                <Label Grid.Column="5" Text="{Binding estimado}" HorizontalOptions="End"/>
+                                
+                                    <!-- Contenido de la celda -->
+                                    <Label  Grid.Column="0" Text="{Binding hora}" HorizontalOptions="End"/>
+                                    <Label  Grid.Column="1" Text="{Binding serie35}" HorizontalOptions="End"/>
+                                    <Label Grid.Column="2" Text="{Binding serie17}" HorizontalOptions="End"/>
+                                    <Label Grid.Column="3" Text="{Binding serie10}" HorizontalOptions="End"/>
+                                    <Label Grid.Column="4" Text="{Binding vendidos}"  HorizontalOptions="End" />
+                                <Label Grid.Column="5" Text="{Binding estimado}" HorizontalOptions="End" />
+                                
                             </Grid>
 
 
