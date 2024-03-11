@@ -32,12 +32,7 @@
                 <StackLayout Grid.Row="3" >
                     <Picker x:Name="ComboCarro" Title="Escoja la unidad" SelectedIndexChanged="ComboCarro_SelectedIndexChanged"></Picker>
                     <Label x:Name="idcarro" Text="" IsVisible="false"></Label>
-                </StackLayout>
-                <StackLayout Grid.Row="4" >
-                    
-                        <Entry x:Name="txtmotivo" Placeholder="Motivo de la Multa" />
-                    
-                </StackLayout>
+                </StackLayout>               
 
                 <!--Espacio para los demas campos-->
 

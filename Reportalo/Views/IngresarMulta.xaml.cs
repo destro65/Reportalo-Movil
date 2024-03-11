@@ -20,10 +20,13 @@ namespace Reportalo.Views
         public IngresarMulta()
         {
             InitializeComponent();
+            ActualizarTabla();
+
         }
 
         private void Button_Clicked(object sender, EventArgs e)
         {
+
             var conexion = new MySqlConnection(Properties.Resources.Conexion);
             conexion.Close();
             conexion.Open();
@@ -55,15 +58,15 @@ namespace Reportalo.Views
             conexion2.Close();
 
             CrossLocalNotifications.Current.Show("Multa Aplicada", "La unidad: "+carro1+", En la Ruta: "+ruta1+", Ha sido multada", 1, DateTime.Now.AddSeconds(5));
+            Navigation.PopAsync();
             //Navigation.PushAsync(new Multas());
 
         }
-
-        protected override void OnAppearing()
+        
+        private void ActualizarTabla()
         {
-            base.OnAppearing();
-            var ruta=new List<string>();
-            var carro= new List<string>();
+            var ruta = new List<string>();
+            var carro = new List<string>();
             var conexion = new MySqlConnection(Properties.Resources.Conexion);
             conexion.Open();
             var cmd = new MySqlCommand("select nombre from rutas ", conexion);
@@ -90,6 +93,7 @@ namespace Reportalo.Views
 
             conexion.Close();
         }
+
         private void ComboRuta_SelectedIndexChanged(object sender, EventArgs e)
         {
             string listaruta=ComboRuta.SelectedItem.ToString();

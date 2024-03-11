@@ -20,8 +20,8 @@
 
 
             </Grid>
-            
-            <ListView x:Name="vistamulta" HasUnevenRows="True" SeparatorColor="SpringGreen" >
+
+            <ListView x:Name="vistamulta" HasUnevenRows="True" SeparatorColor="SpringGreen" IsPullToRefreshEnabled="True" IsRefreshing="True">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

@@ -1,14 +1,10 @@
 ﻿using MySqlConnector;
-using Reportalo.Services;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+using System.Threading;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using static Reportalo.Views.Principal;
+
 
 namespace Reportalo.Views
 {
@@ -16,12 +12,12 @@ namespace Reportalo.Views
     public partial class Multas : ContentPage
     {
         public IList<listamulta> listamultas { get; set; }
+        private Timer timer;
         public Multas()
         {
             InitializeComponent();
             data_list();
-            var toast = DependencyService.Get<IToastService>();
-            toast?.ShowToast("Seleccione un Multa para ver el detalle");
+            InitializeTimer();
         }
         public class listamulta
         {
@@ -29,6 +25,19 @@ namespace Reportalo.Views
             public string nombre { get; set; }
             public string registro { get; set; }
             
+        }
+        private void InitializeTimer()
+        {
+            // Configura un temporizador que llamará a la función UpdateDataList cada 5 segundos
+            timer = new Timer(UpdateDataList, null, 0, 5000);
+        }
+        public void UpdateDataList(object state)
+        {
+            // Esta función se ejecutará cada vez que el temporizador alcance su intervalo.
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                data_list();
+            });
         }
         private void data_list()
         {
