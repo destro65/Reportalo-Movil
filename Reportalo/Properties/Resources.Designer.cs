@@ -61,7 +61,7 @@ namespace Reportalo.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Server=192.168.100.26;Database=reporta;Uid=jose;Pwd=jose;.
+        ///   Busca una cadena traducida similar a Server=193.203.175.91;Database=u231778583_reporta;Uid=u231778583_destrozadore65;Pwd=Harold_65;.
         /// </summary>
         internal static string Conexion {
             get {

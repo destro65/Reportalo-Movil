@@ -73,6 +73,7 @@ namespace Reportalo.Views
                 );
             }
             vistadia.ItemsSource = listadias;
+            conexion.Close();
 
         }
 
